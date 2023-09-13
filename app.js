@@ -9,6 +9,7 @@ let score = document.querySelectorAll("h4")[0];
 let highestScore = document.querySelectorAll("h4")[1];
 let failed = false;
 
+//Starting the game
 document.addEventListener("keydown",()=>{
     if (level == 0) {
         console.log("Game Started");
@@ -16,6 +17,7 @@ document.addEventListener("keydown",()=>{
     }
 });
 
+//Flashing button after certain time
 let btnFlash = function (randcolor){
     randcolor.style = "background-color : white";
     setTimeout(()=>(randcolor.style =''),500);
@@ -23,11 +25,13 @@ let btnFlash = function (randcolor){
     return randcolor.classList[1];
 }
 
+//Flickering buttons by changing color
 let flicker = function (){
     let randcolor = colors[Math.floor(Math.random()*4)];
     return btnFlash(randcolor);
 }
 
+//ending and reinitializing parameters
 let endGame = function (){
     failed = true;
     let body = document.querySelector("body");
@@ -45,6 +49,7 @@ let endGame = function (){
     })
 }
 
+//Checking user input
 let checkAns = function (i){
     if(userInput[i] == colorPattern[i]){
         console.log("Same value");
@@ -63,6 +68,7 @@ let checkAns = function (i){
     }
 }
 
+//Tracking btn press
 let btnPress = function (){
     let event = this;
     btnFlash(event);
@@ -70,7 +76,7 @@ let btnPress = function (){
     checkAns(userInput.length-1);
 }
 
-
+//Getting inputs
 let startGame = function (){
     failed = false;
     userInput = [];
